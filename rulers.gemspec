@@ -5,18 +5,15 @@ require_relative "lib/rulers/version"
 Gem::Specification.new do |spec|
   spec.name          = "rulers"
   spec.version       = Rulers::VERSION
-  spec.authors       = ["nacho"]
-  spec.email         = ["fan01856472@gmail.com"]
+  spec.authors       = ["weilong"]
+  spec.email         = ["weilong@example.com"]
 
-  spec.summary       = "A Rack-based Web Framework"
-  spec.description   = "A Rack-based Web Framework, but with extra awesome."
-  spec.homepage      = "https://github.com/IgnacioFan/rulers-demo"
+  spec.summary       = %q{A Rack-based Web Framework}
+  spec.description   = %q{A Rack-based Web Framework,
+                          learning with Noah Gibbs}
+  spec.homepage      = ""
+  spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
-
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/IgnacioFan/rulers-demo"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -27,11 +24,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  # Uncomment to register a new dependency of your gem
   spec.add_runtime_dependency "rack"
+  spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "rack-test"
-  spec.add_development_dependency "test-unit"
-
-  # For more information and examples about making a new gem, checkout our
-  # guide at: https://bundler.io/guides/creating_gem.html
 end
