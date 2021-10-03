@@ -3,7 +3,7 @@ require_relative "test_helper"
 class TestApp < Rulers::Application
 end
 
-class RulersAppTest < Test::Unit::TestCase
+class RulersAppTest < Minitest::Test
   include Rack::Test::Methods
 
   def app
@@ -17,4 +17,5 @@ class RulersAppTest < Test::Unit::TestCase
     body = last_response.body
     assert body["Hello"]
   end
+
 end
