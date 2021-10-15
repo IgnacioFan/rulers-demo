@@ -24,6 +24,14 @@ class RulersAppTest < Minitest::Test
   #   assert body["Hello"]
   # end
 
+  def test_root
+    get "/"
+
+    assert last_response.ok?
+    body = last_response.body
+    assert body["This is root"]
+  end
+
   def test_get_controller_and_action
     get "/tests/hello"
 
