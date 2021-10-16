@@ -1,13 +1,39 @@
 # frozen_string_literal: true
 require "rulers/array"
-require_relative "rulers/version"
+require "rulers/version"
+require "rulers/routing"
 
 module Rulers
   class Error < StandardError; end
 
   class Application
     def call(env)
-      [200, { "Content-Type" => "text/html" }, ["Hello from Ruby on Rulers!"]]
+      if env["PATH_INFO"] == "/favicon.ico"
+        return [404, { "Content-Type" => "text/html" }, []]
+      end
+
+      if env["PATH_INFO"] == "/"
+        return [200, { "Content-Type" => "text/html" }, [File.read("public/index.html")]]
+      end
+
+      klass, act = get_controller_and_action(env)
+      controller = klass.new(env)
+      begin
+        text = controller.send(act)
+        [200, { "Content-Type" => "text/html" }, [text]]
+      rescue => exception
+        [404, { "Content-Type" => "text/html" }, ["Somthing wrong"]]
+      end
+    end
+  end
+
+  class Controller
+    def initialize(env)
+      @env = env
+    end
+
+    def env
+      @env
     end
   end
 end
