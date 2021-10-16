@@ -7,6 +7,10 @@ class TestsController < Rulers::Controller
   def hello
     "Hello"
   end
+
+  def hello_world
+    render :hello_world, :say => :hey
+  end
 end
 
 class RulersAppTest < Minitest::Test
@@ -15,14 +19,6 @@ class RulersAppTest < Minitest::Test
   def app
     TestApp.new
   end
-
-  # def test_request
-  #   get "/"
-
-  #   assert last_response.ok?
-  #   body = last_response.body
-  #   assert body["Hello"]
-  # end
 
   def test_root
     get "/"
@@ -38,6 +34,14 @@ class RulersAppTest < Minitest::Test
     assert last_response.ok?
     body = last_response.body
     assert body["Hello"]
+  end
+
+  def test_render
+    get "/tests/hello_world"
+
+    assert last_response.ok?
+    body = last_response.body
+    assert body["Hello world!!"]
   end
 
 end
