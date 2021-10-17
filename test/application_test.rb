@@ -34,4 +34,12 @@ class ApplicationTest < Minitest::Test
     assert body["Hey Hello world!!"]
   end
 
+  def test_hello_quote
+    get "/tests/hello_quote"
+
+    assert last_response.ok?
+    body = last_response.body
+    assert body["A penny saved is a penny earned."]
+  end
+
 end
