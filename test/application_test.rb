@@ -34,4 +34,30 @@ class ApplicationTest < Minitest::Test
     assert body["Hey Hello world!!"]
   end
 
+  def test_hello_quote
+    get "/tests/hello_quote"
+
+    assert last_response.ok?
+    body = last_response.body
+    assert body["A penny saved is a penny earned."]
+  end
+
+  def test_more_quotes
+    get "/tests/more_quotes"
+
+    assert last_response.ok?
+    body = last_response.body
+    assert body["A penny saved is a penny earned."]
+    assert body["The greatest glory in living lies not in never falling, but in rising every time we fall."]
+    assert body["Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking."]
+  end
+
+  def test_create_quote
+    get "/tests/create_quote"
+
+    assert last_response.ok?
+    body = last_response.body
+    assert body["Life is what happens when you're busy making other plans."]
+  end
+
 end
