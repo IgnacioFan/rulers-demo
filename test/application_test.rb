@@ -31,7 +31,7 @@ class ApplicationTest < Minitest::Test
 
     assert last_response.ok?
     body = last_response.body
-    assert body["Hello world!!"]
+    assert body["Hey Hello world!!"]
   end
 
 end
