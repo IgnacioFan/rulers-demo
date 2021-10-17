@@ -16,4 +16,15 @@ class TestsController < Rulers::Controller
     quotes = FileModel.all
     render :more_quotes, :quotes => quotes
   end
+
+  def create_quote
+    attrs = {
+      "submitter" => "Noah",
+      "quote" => "Life is what happens when you're busy making other plans.",
+      "attribution" => "John Lennon"
+    }
+
+    quote = FileModel.create(attrs)
+    render :hello_quote, :obj => quote
+  end
 end
