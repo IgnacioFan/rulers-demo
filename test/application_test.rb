@@ -1,23 +1,13 @@
 require_relative "test_helper"
 
-class TestApp < Rulers::Application
+class App < Rulers::Application
 end
 
-class TestsController < Rulers::Controller
-  def hello
-    "Hello"
-  end
-
-  def hello_world
-    render :hello_world, :say => :hey
-  end
-end
-
-class RulersAppTest < Minitest::Test
+class ApplicationTest < Minitest::Test
   include Rack::Test::Methods
 
   def app
-    TestApp.new
+    App.new
   end
 
   def test_root
@@ -28,7 +18,7 @@ class RulersAppTest < Minitest::Test
     assert body["This is root"]
   end
 
-  def test_get_controller_and_action
+  def test_hello
     get "/tests/hello"
 
     assert last_response.ok?
@@ -36,7 +26,7 @@ class RulersAppTest < Minitest::Test
     assert body["Hello"]
   end
 
-  def test_render
+  def test_hello_world
     get "/tests/hello_world"
 
     assert last_response.ok?
