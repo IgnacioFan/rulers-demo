@@ -8,7 +8,7 @@ class TestsController < Rulers::Controller
   end
 
   def hello_quote
-    quote_1 = Rulers::Model::FileModel.find(1)
+    quote_1 = FileModel.find(1)
     render :hello_quote, :obj => quote_1
   end
 end
